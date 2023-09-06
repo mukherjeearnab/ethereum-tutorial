@@ -49,30 +49,30 @@
 
     `geth init --datadir node2 genesis.json`
 
-8. Start the second node, i.e., Node-2:
+10. Start the second node, i.e., Node-2:
 
     `geth --datadir node2 --networkid 824032 --port 30306 --authrpc.port 8553  --bootnodes "enr:-KO4QGb73xzGsdK3lt9mw2AZn2152s5bHdTxeo4R8wGpQI3Lb7cNcTRDIbO3a9ek3I47UdzDJbOSDeTREm7NCvPdwqmGAYpqc83fg2V0aMfGhIw59tiAgmlkgnY0gmlwhH8AAAGJc2VjcDI1NmsxoQLNv435unhWOJrKT4w_Z6WAPDOYuapz0YnfEL24rH-_DYRzbmFwwIN0Y3CCdl-DdWRwgnZf"`
 
-9. Start the JS Console for Node-2:
+11. Start the JS Console for Node-2:
 
     `geth attach node2/geth.ipc`
 
-10. Check in Node-2 console for other peers:
+12. Check in Node-2 console for other peers:
 
     `admin.peers`
 
-11. In Node-2 Try to create a new account (using Terminal):
+13. In Node-2 Try to create a new account (using Terminal):
 
     `geth account new --datadir node2`
 
-12. Start the JS Console of Node-2 and Show the newly added account:
+14. Start the JS Console of Node-2 and Show the newly added account:
 
     `eth.accounts`
 
-12. From Node-1's account, send some ether to Node-2's account:
+15. From Node-1's account, send some ether to Node-2's account:
 
     `eth.sendTransaction({from: '0x232C6611680b5993432Fbf35fb94005cAa3AAbd3', to: '0x619c170cd5979d13c0aa3c6738378094e39b4d87', value: 5000})`
 
-14. Check the balance of the newly created account on Node-2:
+16. Check the balance of the newly created account on Node-2:
 
     `eth.getBalance("0x619c170cd5979d13c0aa3c6738378094e39b4d87")`
