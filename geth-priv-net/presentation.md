@@ -21,6 +21,12 @@ style: |
       display: block;
       margin: 0 auto;
     }
+    img[alt~="image-right"] {
+        float: right;
+        top: 0;
+    }
+
+
 ---
 
 # Creating your own 
@@ -96,10 +102,9 @@ Besu is an Ethereum client developed by the **Hyperledger Foundation**, implemen
 
 4. Initiating Ethereum **Node-2** and Connecting it with **Node-1**.
 
-5. Ether Transfer from an Account on **Node-1** to an Account on **Node-2**.
-
-
-
+5. Ether Transfer from and to Accounts:
+    1. From an Account to an Account on  the **same Node**.
+    2. From an Account on **Node-1** to an Account on **Node-2**.
 ---
 
 ## Geth Installation
@@ -186,8 +191,8 @@ Besu is an Ethereum client developed by the **Hyperledger Foundation**, implemen
     
 6. Start the Node-1 using:
 
-        geth --datadir node1 --networkid UniqueNetworkID \
-        --unlock 0xSignerAccountAddress --mine \
+        geth --datadir node1 --networkid UniqueNetworkID --http \
+        --allow-insecure-unlock --unlock 0xSignerAccountAddress --mine \
         --miner.etherbase 0xSignerAccountAddress
 
 7. Start the **Javascript Console** for Node-1:
@@ -263,6 +268,20 @@ Besu is an Ethereum client developed by the **Hyperledger Foundation**, implemen
 
 ---
 
+## **Transfer Ether** for accounts on Same Node
+
+1. On the node's JS Console execute:
+
+        eth.sendTransaction({from: '0xNodeAcc1', to: '0xNodeAcc2', value: 5000})
+
+    Executing this command returns a **hexadecimal string** which is the **Transaction ID**, if the transaction is **successful**, else it prints the **stack trace of the error**.
+
+2. On the node's JS Console check the balance of the account where teh funds are transferred:
+
+        eth.getBalance("0xNodeAcc2")
+
+---
+
 ## **Transfer Ether** from Node-1's to Node-2's account
 
 1. On the Node-1's JS Console execute:
@@ -274,6 +293,36 @@ Besu is an Ethereum client developed by the **Hyperledger Foundation**, implemen
 2. On the Node-2's JS Console check the balance of the account where teh funds are transferred:
 
         eth.getBalance("0xNode2Acc")
+
+---
+
+## Connecting to Metamask
+
+1. Open Metamask.
+
+2. Click on Add Network.
+
+3. Enter the Information as follows:
+
+![bg top: 100% 90%](./metamask.jpg)
+
+---
+
+## Import the Account into Metamask
+
+1. Click on Accounts.
+
+2. Click **Import Account**.
+
+3. **Select** Type as `JSON`.
+
+4. In `node1/keystore` a file starting `UTC--` contains the encrypted JSON of the account information. **Select** that file.
+
+5. For **Password**, enter the password you set during the creation of the account.
+
+6. Hit **Import**, and wait for a few minutes (the screen might freeze, due to a bug in Metamask) to import the account.
+
+7. Now you can view the Account on Metamask.
 
 ---
 
