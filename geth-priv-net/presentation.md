@@ -230,6 +230,23 @@ Besu is an Ethereum client developed by the **Hyperledger Foundation**, implemen
 
 ---
 
+## Node-2 Setup (contd.)
+
+5. Create an Ethereum Account on Node-2
+
+        geth account new --datadir node2
+
+6. Copy the account address and check it's balance.
+
+        eth.accounts
+
+    This should show the newly created account's address in the list.
+
+        eth.getBalance('0xNode2Acc')
+    
+    At this point this account does not have any Ether.
+---
+
 ## Geth Console Commands
 
 1. Check for Other Peers:
@@ -260,6 +277,83 @@ Besu is an Ethereum client developed by the **Hyperledger Foundation**, implemen
 
 ---
 
+## Some Technical Details
+
+- **Ethereum Node Record** (ENR):
+    - It is a **discovery protocol** used in Ethereum to **find and connect** to peers on the network.
+    - It is a **self-signed** record that contains information about a node, allowing it to announce itself to the network.
+        - **Node ID**: This is a unique identifier for the node.
+        - **IP Address and Port**: Where others can connect to this node.
+        - **UDP Port**: For discovery protocol messages.
+        - **Transport Public Key**: For secure communication between nodes.
+        - **Signature**: Signed by the private key corresponding to the public key in the record.
+
+---
+
+## Some Technical Details (contd.)
+
+- **enode**:
+    - It is an identifier used in Ethereum to represent a node on the network.
+    - combination of the node's **Ethereum address**, the **IP address** and **port** that the node is listening on.
+
+            enode://<node_id>@<ip_address>:<port>
+
+    
+    - The node's Ethereum address (`<node_id>`) is the last 20 bytes of its public key's hash.
+
+---
+
+## Explaining the Genesis Config
+
+- What were these `"...Block": 0`?
+
+        "homesteadBlock": 0,
+        "eip150Block": 0,
+        "eip155Block": 0,
+        "eip158Block": 0,
+        "byzantiumBlock": 0,
+        "constantinopleBlock": 0,
+        "petersburgBlock": 0,
+        "istanbulBlock": 0,
+        "berlinBlock": 0,
+
+    - They define various protocol upgrade blocks. 
+    
+    - We specify the block numbers at which these protocol upgrades are activated when creating a new Ethereum network.
+
+---
+
+## Explaining the Genesis Config (contd.)
+
+- What were the `epoch` and `period` for `clique`?
+
+        "clique": {
+            "period": 5,
+            "epoch": 30000
+        }
+
+    - **Epoch**: A unit of time during which a fixed set of signers take turns for creating blocks.
+
+    - **Period**: A duration of time within which a certain number of blocks must be created. It defines the time allocated for validators to take their turns in creating blocks.
+---
+
+## Explaining the Genesis Config (contd.)
+
+- What was the `extradata` field in `genesis.json`?
+
+    - Is used to specify the Ethereum address of the **initial validator(s)** who will participate in block creation.
+    
+    - These validators are often referred to as the **"sealers"**.
+
+    - Establishes which accounts have the **authority to participate** in block sealing and block proposal from the very beginning.
+
+    - Additionally, the it can contain other **optional data**, like:
+        - such as identifying the network.
+        - providing additional information about the genesis block.
+        - or indicating a specific network configuration.
+
+---
+
 ## Conclusion
 
 In this tutorial, we:
@@ -278,9 +372,11 @@ In this tutorial, we:
 
 ## Next Steps
 
-- Try Orchestrating a Geth Network on seperate machines.
+- Try Orchestrating a Geth Network on **seperate machines**.
 
 - Learn more about **Geth and Hyperledger Besu**, and how we can design **performant and scalable** Private Ethereum Networks for **Business Applications**.
+
+- Explore ways to **Dockerize** and create **clusters** of Ethereum nodes.
 
 - Build your **own personal project** on blockchain using these technologies.
 
