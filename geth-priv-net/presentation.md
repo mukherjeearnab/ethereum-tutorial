@@ -105,6 +105,8 @@ Besu is an Ethereum client developed by the **Hyperledger Foundation**, implemen
 5. Ether Transfer from and to Accounts:
     1. From an Account to an Account on  the **same Node**.
     2. From an Account on **Node-1** to an Account on **Node-2**.
+
+6. Connecting the Network Node to **Metamask Wallet**.
 ---
 
 ## Geth Installation
@@ -416,6 +418,8 @@ In this tutorial, we:
 4. Orchestrated our own Private Ethereum Network with 2 nodes.
 
 5. Transferred funds from one Ethereum Account to another.
+
+6. Connected the Network Node to Metamask Wallet.
 
 ---
 
