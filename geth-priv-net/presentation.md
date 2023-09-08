@@ -32,7 +32,7 @@ style: |
 
 ---
 
-# Creating your own 
+# Creating Your Own 
 # **Ethereum Private Network**
 
 ### A Hands-On Tutorial
@@ -357,82 +357,95 @@ Besu is an Ethereum client developed by the **Hyperledger Foundation**, implemen
 
 ## Some Technical Details
 
-- **Ethereum Node Record** (ENR):
-    - It is a **discovery protocol** used in Ethereum to **find and connect** to peers on the network.
-    - It is a **self-signed** record that contains information about a node, allowing it to announce itself to the network.
-        - **Node ID**: This is a unique identifier for the node.
-        - **IP Address and Port**: Where others can connect to this node.
-        - **UDP Port**: For discovery protocol messages.
-        - **Transport Public Key**: For secure communication between nodes.
-        - **Signature**: Signed by the private key corresponding to the public key in the record.
+#### **Ethereum Node Record (ENR)**
+- It is a **discovery protocol** used in Ethereum to **find and connect** to peers on the network.
+- It is a **self-signed** record that contains information about a node, allowing it to announce itself to the network.
+    - **Node ID**: This is a unique identifier for the node.
+    - **IP Address and Port**: Where others can connect to this node.
+    - **UDP Port**: For discovery protocol messages.
+    - **Transport Public Key**: For secure communication between nodes.
+    - **Signature**: Signed by the private key corresponding to the public key in the record.
 
 ---
 
 ## Some Technical Details (contd.)
 
-- **enode**:
-    - It is an identifier used in Ethereum to represent a node on the network.
-    - combination of the node's **Ethereum address**, the **IP address** and **Port** that the node is listening on.
+#### **enode**
+- It is an identifier used in Ethereum to represent a node on the network.
+- combination of the node's **Ethereum address**, the **IP address** and **Port** that the node is listening on.
 
-            enode://<node_id>@<ip_address>:<port>
+        enode://<node_id>@<ip_address>:<port>
 
-    
-    - The node's Ethereum address (`<node_id>`) is the **last 20 bytes** of its public key's hash.
+
+- The node's Ethereum address (`<node_id>`) is the **last 20 bytes** of its public key's hash.
+
+---
+
+## Some Technical Details (contd.)
+
+#### **bootnodes**
+- Assist with the initial discovery process for new nodes, helping them locate and connect to other peers in the network.
+
+    - **Peer Discovery**: serve as initial contact points for new nodes seeking to join the network.
+
+    - **Static Node Addresses**: Bootnodes have static IP addresses and are known in advance by nodes joining the network.
+
+    - **Discovery Protocol**: They respond to discovery requests from new nodes and providing them with information about other peers in the network.
 
 ---
 
 ## Explaining the Genesis Config
 
-- What were these `"...Block": 0`?
+#### **What were these `"...Block": 0`?**
 
-    ```json
-    "homesteadBlock": 0,
-    "eip150Block": 0,
-    "eip155Block": 0,
-    "eip158Block": 0,
-    "byzantiumBlock": 0,
-    "constantinopleBlock": 0,
-    "petersburgBlock": 0,
-    "istanbulBlock": 0,
-    "berlinBlock": 0,
-    ```
+```json
+"homesteadBlock": 0,
+"eip150Block": 0,
+"eip155Block": 0,
+"eip158Block": 0,
+"byzantiumBlock": 0,
+"constantinopleBlock": 0,
+"petersburgBlock": 0,
+"istanbulBlock": 0,
+"berlinBlock": 0,
+```
 
-    - They define various protocol upgrade blocks. 
-    
-    - We specify the block numbers at which these protocol upgrades are activated when creating a new Ethereum network.
+- They define various protocol upgrade blocks. 
+
+- We specify the block numbers at which these protocol upgrades are activated when creating a new Ethereum network.
 
 ---
 
 ## Explaining the Genesis Config (contd.)
 
-- What were the `epoch` and `period` for `clique`?
+#### **What were the `epoch` and `period` for `clique`?**
 
-    ```json
-    "clique": {
-        "period": 5,
-        "epoch": 30000
-    }
-    ```
+```json
+"clique": {
+    "period": 5,
+    "epoch": 30000
+}
+```
 
-    - **Epoch**: A unit of time during which a fixed set of signers take turns for creating blocks.
+- **Epoch**: A unit of time during which a fixed set of signers take turns for creating blocks.
 
-    - **Period**: A duration of time within which a certain number of blocks must be created. It defines the time allocated for validators to take their turns in creating blocks.
+- **Period**: A duration of time within which a certain number of blocks must be created. It defines the time allocated for validators to take their turns in creating blocks.
 ---
 
 ## Explaining the Genesis Config (contd.)
 
-- What was the `extradata` field in `genesis.json`?
+#### **What was the `extradata` field in `genesis.json`?**
 
-    - Is used to specify the Ethereum address of the **initial validator(s)** who will participate in block creation.
-    
-    - These validators are often referred to as the **"sealers"**.
+- Is used to specify the Ethereum address of the **initial validator(s)** who will participate in block creation.
 
-    - Establishes which accounts have the **authority to participate** in block sealing and block proposal from the very beginning.
+- These validators are often referred to as the **"sealers"**.
 
-    - Additionally, the it can contain other **optional data**, like:
-        - such as identifying the network.
-        - providing additional information about the genesis block.
-        - or indicating a specific network configuration.
+- Establishes which accounts have the **authority to participate** in block sealing and block proposal from the very beginning.
+
+- Additionally, the it can contain other **optional data**, like:
+    - such as identifying the network.
+    - providing additional information about the genesis block.
+    - or indicating a specific network configuration.
 
 ---
 
@@ -480,4 +493,4 @@ https://github.com/mukherjeearnab/ethereum-tutorial -->
 ---
 <br><br><br>
 
-# Thank you! <!--fit-->
+# **Thank** you! <!--fit-->
