@@ -25,6 +25,9 @@ style: |
         float: right;
         top: 0;
     }
+    pre, code {
+        background-color: #003451
+    }
 
 
 ---
@@ -37,7 +40,7 @@ style: |
 
 <br>
 
-Blockchain Technology and its Applications - CS677
+##### Blockchain Technology and its Applications - CS677
 
 <br><br>
 
@@ -135,38 +138,42 @@ Besu is an Ethereum client developed by the **Hyperledger Foundation**, implemen
 
 ## The Genesis File **(Part-1: Chain Config)**
 
-    "config": {
-        "chainId": 824032,
-        "homesteadBlock": 0,
-        "eip150Block": 0,
-        "eip155Block": 0,
-        "eip158Block": 0,
-        "byzantiumBlock": 0,
-        "constantinopleBlock": 0,
-        "petersburgBlock": 0,
-        "istanbulBlock": 0,
-        "berlinBlock": 0,
-        "clique": {
-            "period": 5,
-            "epoch": 30000
-        }
+```json
+"config": {
+    "chainId": 824032,
+    "homesteadBlock": 0,
+    "eip150Block": 0,
+    "eip155Block": 0,
+    "eip158Block": 0,
+    "byzantiumBlock": 0,
+    "constantinopleBlock": 0,
+    "petersburgBlock": 0,
+    "istanbulBlock": 0,
+    "berlinBlock": 0,
+    "clique": {
+        "period": 5,
+        "epoch": 30000
     }
+}
+```
 
 ---
 
 ## The Genesis File **(Part-2: Consensus & Accounts)**
 
-    "difficulty": "1",
-    "gasLimit": "8000000",
-    "extradata": "0x00...00232C6611680b5993432Fbf35fb94005cAa3AAbd300...00",
-    "alloc": {
-        "232C6611680b5993432Fbf35fb94005cAa3AAbd3": {
-            "balance": "30000000000000000000000000000000000000000000000000000"
-        },
-        "f41c74c9ae680c1aa78f42e5647a62f353b7bdde": {
-            "balance": "40000000000000000000000000000000000000000000000000000"
-        }
+```json
+"difficulty": "1",
+"gasLimit": "8000000",
+"extradata": "0x00...00232C6611680b5993432Fbf35fb94005cAa3AAbd300...00",
+"alloc": {
+    "232C6611680b5993432Fbf35fb94005cAa3AAbd3": {
+        "balance": "30000000000000000000000000000000000000000000000000000"
+    },
+    "f41c74c9ae680c1aa78f42e5647a62f353b7bdde": {
+        "balance": "40000000000000000000000000000000000000000000000000000"
     }
+}
+```
 
 ---
 
@@ -211,12 +218,16 @@ Besu is an Ethereum client developed by the **Hyperledger Foundation**, implemen
 
 1. To check the balance of the signer Account, use the following command in the **JS Console**:
 
-        eth.getBalance("0xSignerAccountAddress")
+    ```js
+    eth.getBalance("0xSignerAccountAddress")
+    ```
 
 2. Get the **Node Record of Node-1** by executing the following in the **JS Console**:
 
-        admin.nodeInfo.enr
-    
+        
+    ```js
+    admin.nodeInfo.enr
+    ```
     This shows a string starting with `enr:`, which will be later useful for **connecting Node-2** with **Node-1**.
 
 ---
@@ -249,11 +260,15 @@ Besu is an Ethereum client developed by the **Hyperledger Foundation**, implemen
 
 6. Copy the account address and check it's balance.
 
-        eth.accounts
+    ```js
+    eth.accounts
+    ```
 
     This should show the newly created account's address in the list.
 
-        eth.getBalance('0xNode2Acc')
+    ```js
+    eth.getBalance('0xNode2Acc')
+    ```
     
     At this point this account does not have any Ether.
 ---
@@ -278,13 +293,17 @@ Besu is an Ethereum client developed by the **Hyperledger Foundation**, implemen
 
 1. On the node's JS Console execute:
 
-        eth.sendTransaction({from: '0xNodeAcc1', to: '0xNodeAcc2', value: 5000})
+    ```js
+    eth.sendTransaction({from: '0xNodeAcc1', to: '0xNodeAcc2', value: 5000})
+    ```
 
     Executing this command returns a **hexadecimal string** which is the **Transaction ID**, if the transaction is **successful**, else it prints the **stack trace of the error**.
 
 2. On the node's JS Console check the balance of the account where the funds are transferred:
 
-        eth.getBalance("0xNodeAcc2")
+    ```js
+    eth.getBalance("0xNodeAcc2")
+    ```
 
 ---
 
@@ -292,13 +311,17 @@ Besu is an Ethereum client developed by the **Hyperledger Foundation**, implemen
 
 1. On the Node-1's JS Console execute:
 
-        eth.sendTransaction({from: '0xNode1Acc', to: '0xNode2Acc', value: 5000})
+    ```js
+    eth.sendTransaction({from: '0xNode1Acc', to: '0xNode2Acc', value: 5000})
+    ```
 
     Executing this command returns a **hexadecimal string** which is the **Transaction ID**, if the transaction is **successful**, else it prints the **stack trace of the error**.
 
 2. On the Node-2's JS Console check the balance of the account where the funds are transferred:
 
-        eth.getBalance("0xNode2Acc")
+    ```js
+    eth.getBalance("0xNode2Acc")
+    ```
 
 ---
 
@@ -362,15 +385,17 @@ Besu is an Ethereum client developed by the **Hyperledger Foundation**, implemen
 
 - What were these `"...Block": 0`?
 
-        "homesteadBlock": 0,
-        "eip150Block": 0,
-        "eip155Block": 0,
-        "eip158Block": 0,
-        "byzantiumBlock": 0,
-        "constantinopleBlock": 0,
-        "petersburgBlock": 0,
-        "istanbulBlock": 0,
-        "berlinBlock": 0,
+    ```json
+    "homesteadBlock": 0,
+    "eip150Block": 0,
+    "eip155Block": 0,
+    "eip158Block": 0,
+    "byzantiumBlock": 0,
+    "constantinopleBlock": 0,
+    "petersburgBlock": 0,
+    "istanbulBlock": 0,
+    "berlinBlock": 0,
+    ```
 
     - They define various protocol upgrade blocks. 
     
@@ -382,10 +407,12 @@ Besu is an Ethereum client developed by the **Hyperledger Foundation**, implemen
 
 - What were the `epoch` and `period` for `clique`?
 
-        "clique": {
-            "period": 5,
-            "epoch": 30000
-        }
+    ```json
+    "clique": {
+        "period": 5,
+        "epoch": 30000
+    }
+    ```
 
     - **Epoch**: A unit of time during which a fixed set of signers take turns for creating blocks.
 
@@ -451,5 +478,6 @@ https://besu.hyperledger.org/
 https://github.com/mukherjeearnab/ethereum-tutorial -->
 
 ---
+<br><br><br>
 
 # Thank you! <!--fit-->
