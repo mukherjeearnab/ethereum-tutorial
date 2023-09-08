@@ -35,7 +35,11 @@ style: |
 ### A Hands-On Tutorial
 
 
-<br><br><br><br>
+<br>
+
+Blockchain Technology and its Applications - CS677
+
+<br><br>
 
 
 Arnab Mukherjee
@@ -61,7 +65,7 @@ Indian Institute of Technology Patna
 
 * Works with other nodes (or clients) to **validate, execute, and propagate** transactions and smart contracts on the blockchain.
 
-* They also play a critical role in **reaching consensus** on the **state** of the blockchain, through **consensus algorithms** like Proof-of-Work, Proof-of-Statke or Proof-of-Authority. 
+* They also play a critical role in **reaching consensus** on the **state** of the blockchain, through **consensus algorithms** like Proof-of-Work, Proof-of-Stake or Proof-of-Authority. 
 
 ---
 
@@ -86,7 +90,7 @@ Besu is an Ethereum client developed by the **Hyperledger Foundation**, implemen
 
 - Consensus works in **epochs** where a set of **signers** (validators) take turns proposing and validating blocks.
 
-- Transactions in a Clique PoA network are confirmed quickly.
+- Transactions on a **Clique PoA** network are confirmed quickly.
 
 - Clique PoA relies on a **controlled set of validators**, making it more suitable for private networks with known participants.
 
@@ -154,7 +158,7 @@ Besu is an Ethereum client developed by the **Hyperledger Foundation**, implemen
 
     "difficulty": "1",
     "gasLimit": "8000000",
-    "extradata": "0x00...00232C6611680b5993432Fbf35fb94005cAa3AAbd300..00",
+    "extradata": "0x00...00232C6611680b5993432Fbf35fb94005cAa3AAbd300...00",
     "alloc": {
         "232C6611680b5993432Fbf35fb94005cAa3AAbd3": {
             "balance": "30000000000000000000000000000000000000000000000000000"
@@ -260,7 +264,7 @@ Besu is an Ethereum client developed by the **Hyperledger Foundation**, implemen
 
         admin.peers
 
-    this returns an array of all the peers the current node has discovered and connected to.
+    This returns an array of all the peers the current node has discovered and connected to.
 
 2. Check for Accounts associated with the current node:
 
@@ -278,7 +282,7 @@ Besu is an Ethereum client developed by the **Hyperledger Foundation**, implemen
 
     Executing this command returns a **hexadecimal string** which is the **Transaction ID**, if the transaction is **successful**, else it prints the **stack trace of the error**.
 
-2. On the node's JS Console check the balance of the account where teh funds are transferred:
+2. On the node's JS Console check the balance of the account where the funds are transferred:
 
         eth.getBalance("0xNodeAcc2")
 
@@ -292,7 +296,7 @@ Besu is an Ethereum client developed by the **Hyperledger Foundation**, implemen
 
     Executing this command returns a **hexadecimal string** which is the **Transaction ID**, if the transaction is **successful**, else it prints the **stack trace of the error**.
 
-2. On the Node-2's JS Console check the balance of the account where teh funds are transferred:
+2. On the Node-2's JS Console check the balance of the account where the funds are transferred:
 
         eth.getBalance("0xNode2Acc")
 
@@ -345,12 +349,12 @@ Besu is an Ethereum client developed by the **Hyperledger Foundation**, implemen
 
 - **enode**:
     - It is an identifier used in Ethereum to represent a node on the network.
-    - combination of the node's **Ethereum address**, the **IP address** and **port** that the node is listening on.
+    - combination of the node's **Ethereum address**, the **IP address** and **Port** that the node is listening on.
 
             enode://<node_id>@<ip_address>:<port>
 
     
-    - The node's Ethereum address (`<node_id>`) is the last 20 bytes of its public key's hash.
+    - The node's Ethereum address (`<node_id>`) is the **last 20 bytes** of its public key's hash.
 
 ---
 
@@ -443,8 +447,8 @@ https://geth.ethereum.org/
 - Hyperledger Besu Documentation:
 https://besu.hyperledger.org/
 
-- GitHub Repo of this Tutorial: 
-https://github.com/mukherjeearnab/ethereum-tutorial
+<!-- - GitHub Repo of this Tutorial: 
+https://github.com/mukherjeearnab/ethereum-tutorial -->
 
 ---
 
